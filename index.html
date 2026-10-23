@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orochi · Square Search Visualizer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+
+    <header class="header">
+      <h1>Orochi <span class="tag">Square Search</span></h1>
+      <p class="tagline">
+        D<sub>4</sub> symmetry vs. linear search — same array, same needle, running together.
+        Each cell displays its own index. Click any cell to search for it.
+      </p>
+    </header>
+
+    <div class="panel controls">
+
+      <div class="row">
+        <span class="lbl">Array size</span>
+        <input type="range" id="size-slider" min="4" max="400" value="25" step="1">
+        <span id="size-display" class="badge">n=25 &nbsp;(5×5)</span>
+      </div>
+
+      <div class="row">
+        <span class="lbl">Speed</span>
+        <input type="range" id="speed-slider" min="1" max="10" value="3" step="1">
+        <span id="speed-display" class="badge">×3</span>
+      </div>
+
+      <div class="row row--actions">
+        <span class="lbl">Needle</span>
+        <input type="number" id="needle-input" min="0" value="12" class="needle-input">
+        <span class="hint">or click a cell</span>
+        <button id="btn-play"  class="btn btn--primary">&#9654; Play</button>
+        <button id="btn-step"  class="btn">&#9197; Step</button>
+        <button id="btn-reset" class="btn">&#8635; Reset</button>
+      </div>
+
+    </div>
+
+    <!-- Side-by-side grids -->
+    <div class="panel grid-panel">
+
+      <div class="grid-half">
+        <p class="grid-label">
+          Orochi
+          <span class="grid-tag">D&#x2084; symmetry</span>
+        </p>
+        <div class="grid-scroll" id="orochi-scroll">
+          <div class="grid" id="grid-orochi"></div>
+        </div>
+        <p class="grid-footer">
+          Steps&nbsp;<strong id="o-steps">0</strong>
+          &nbsp;&#xB7;&nbsp;
+          Checks&nbsp;<strong id="o-comps">0</strong>
+          &nbsp;
+          <span id="o-result" class="grid-result"></span>
+        </p>
+      </div>
+
+      <div class="grid-sep"></div>
+
+      <div class="grid-half">
+        <p class="grid-label">
+          Linear
+          <span class="grid-tag">sequential</span>
+        </p>
+        <div class="grid-scroll" id="linear-scroll">
+          <div class="grid" id="grid-linear"></div>
+        </div>
+        <p class="grid-footer">
+          Checks&nbsp;<strong id="l-comps">0</strong>
+          &nbsp;
+          <span id="l-result" class="grid-result"></span>
+        </p>
+      </div>
+
+    </div>
+
+    <div class="panel status-panel">
+      <p id="status-msg" class="status-msg" data-state="">Click a cell or press Play to begin.</p>
+    </div>
+
+    <div class="panel legend">
+      <div class="legend-item"><span class="sw sw--unchecked"></span>Unchecked</div>
+      <div class="legend-item"><span class="sw sw--checking-o"></span>Checking (Orochi)</div>
+      <div class="legend-item"><span class="sw sw--e0"></span>e&#x2080; main head</div>
+      <div class="legend-item"><span class="sw sw--checked-o"></span>Checked (Orochi)</div>
+      <div class="legend-item"><span class="sw sw--checking-l"></span>Checking (Linear)</div>
+      <div class="legend-item"><span class="sw sw--checked-l"></span>Checked (Linear)</div>
+      <div class="legend-item"><span class="sw sw--found"></span>Found</div>
+      <div class="legend-item"><span class="sw sw--needle"></span>Needle</div>
+      <div class="legend-item"><span class="sw sw--padded"></span>Padded</div>
+    </div>
+
+    <p class="kbd">
+      <kbd>Space</kbd> play / pause &nbsp;&nbsp;
+      <kbd>&rarr;</kbd> step &nbsp;&nbsp;
+      <kbd>Esc</kbd> reset
+    </p>
+
+  </div>
+  <script type="module" src="visualizer.js"></script>
+</body>
+</html>

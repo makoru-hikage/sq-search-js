@@ -1,0 +1,18 @@
+{
+  "name": "sq-search-js",
+  "version": "1.0.0",
+  "description": "Square Search (Orochi) algorithm — ESM JavaScript port",
+  "type": "module",
+  "scripts": {
+    "serve":             "node serve.js",
+    "start":             "node main.js",
+    "test:correctness":   "node test_correctness.js",
+    "test:coverage":      "node test_coverage.js",
+    "benchmark":          "node benchmark.js",
+    "benchmark:large":    "node benchmark_large.js",
+    "benchmark:random":   "node benchmark_random.js",
+    "audit":              "node audit_heads.js",
+    "trace:25":           "node trace_25.js",
+    "trace:wins":         "node trace_wins.js"
+  }
+}
