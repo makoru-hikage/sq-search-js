@@ -31,7 +31,7 @@ const pi = (v, w) => String(v).padStart(w);
 const pf = (v, d, w) => v.toFixed(d).padStart(w);
 
 console.log(`RANDOM NEEDLE BENCHMARK  (${N_QUERIES} queries: ${Math.round(FOUND_RATIO * 100)}% hit  ${Math.round((1 - FOUND_RATIO) * 100)}% miss)\n`);
-console.log(`${'n'.padStart(8)} | ${'b'.padStart(5)} | ${'Linear µs'.padStart(10)} | ${'Orochi µs'.padStart(10)} | ${'ratio'.padStart(6)}`);
+console.log(`${'n'.padStart(8)} | ${'b'.padStart(5)} | ${'Linear µs'.padStart(10)} | ${'Yamata µs'.padStart(10)} | ${'ratio'.padStart(6)}`);
 console.log('-'.repeat(52));
 
 const rng = mulberry32(42);

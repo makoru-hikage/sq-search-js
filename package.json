@@ -1,7 +1,7 @@
 {
   "name": "sq-search-js",
   "version": "1.0.0",
-  "description": "Square Search (Orochi) algorithm — ESM JavaScript port",
+  "description": "Square Search (Yamata) algorithm — ESM JavaScript port",
   "type": "module",
   "scripts": {
     "serve":             "node serve.js",

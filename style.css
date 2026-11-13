@@ -252,7 +252,7 @@ input[type="range"] {
   font-size: 0.6rem;
 }
 
-/* Orochi orbit — hue driven by JS custom property */
+/* Yamata orbit — hue driven by JS custom property */
 .cell--checking-o {
   background: hsl(var(--orbit-hue, 210) 62% 42%);
   color: #fff;

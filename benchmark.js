@@ -2,7 +2,7 @@
  * benchmark.js
  *
  * Port of benchmark.py.
- * Compares squareSearch (Orochi) against linear and binary search
+ * Compares squareSearch (Yamata) against linear and binary search
  * on both sorted and unsorted arrays.
  *
  * performance.now() returns milliseconds; we convert to microseconds.
@@ -58,7 +58,7 @@ const pf = (v, d, w) => v.toFixed(d).padStart(w);
 const SIZES      = [4, 9, 16, 25, 49, 64, 100, 225, 400, 625, 900];
 const ITERATIONS = 10000;
 
-const HEADER = `${'Size'.padStart(5)} | ${'Needle'.padStart(8)} | ${'Linear µs'.padStart(10)} | ${'Orochi µs'.padStart(10)} | ${'Binary µs'.padStart(10)} | ${'Winner'.padStart(8)}`;
+const HEADER = `${'Size'.padStart(5)} | ${'Needle'.padStart(8)} | ${'Linear µs'.padStart(10)} | ${'Yamata µs'.padStart(10)} | ${'Binary µs'.padStart(10)} | ${'Winner'.padStart(8)}`;
 const DIVIDER = '-'.repeat(HEADER.length);
 
 // ── Sorted arrays ─────────────────────────────────────────────────────────────
@@ -78,11 +78,11 @@ for (const size of SIZES) {
   ];
   for (const [label, needle] of cases) {
     const tLinear = benchmark(linearSearch,       arr, needle, ITERATIONS);
-    const tOrochi = benchmark(squareSearch,        arr, needle, ITERATIONS);
+    const tYamata = benchmark(squareSearch,        arr, needle, ITERATIONS);
     const tBinary = benchmark(binarySearchSorted,  arr, needle, ITERATIONS);
-    const winner  = tLinear <= tOrochi && tLinear <= tBinary ? 'Linear'
-                  : tOrochi <= tBinary ? 'Orochi' : 'Binary';
-    console.log(`${pi(size,5)} | ${pi(label,8)} | ${pf(tLinear,3,10)} | ${pf(tOrochi,3,10)} | ${pf(tBinary,3,10)} | ${pi(winner,8)}`);
+    const winner  = tLinear <= tYamata && tLinear <= tBinary ? 'Linear'
+                  : tYamata <= tBinary ? 'Yamata' : 'Binary';
+    console.log(`${pi(size,5)} | ${pi(label,8)} | ${pf(tLinear,3,10)} | ${pf(tYamata,3,10)} | ${pf(tBinary,3,10)} | ${pi(winner,8)}`);
   }
   console.log();
 }
@@ -106,11 +106,11 @@ for (const size of SIZES) {
   ];
   for (const [label, needle] of cases) {
     const tLinear = benchmark(linearSearch,         arr, needle, ITERATIONS);
-    const tOrochi = benchmark(squareSearch,          arr, needle, ITERATIONS);
+    const tYamata = benchmark(squareSearch,          arr, needle, ITERATIONS);
     const tBinary = benchmark(binarySearchUnsorted,  arr, needle, ITERATIONS);
-    const winner  = tLinear <= tOrochi && tLinear <= tBinary ? 'Linear'
-                  : tOrochi <= tBinary ? 'Orochi' : 'Binary';
-    console.log(`${pi(size,5)} | ${pi(label,8)} | ${pf(tLinear,3,10)} | ${pf(tOrochi,3,10)} | ${pf(tBinary,3,10)} | ${pi(winner,8)}`);
+    const winner  = tLinear <= tYamata && tLinear <= tBinary ? 'Linear'
+                  : tYamata <= tBinary ? 'Yamata' : 'Binary';
+    console.log(`${pi(size,5)} | ${pi(label,8)} | ${pf(tLinear,3,10)} | ${pf(tYamata,3,10)} | ${pf(tBinary,3,10)} | ${pi(winner,8)}`);
   }
   console.log();
 }

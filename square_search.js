@@ -1,7 +1,7 @@
 /**
  * square_search.js
  *
- * Square Search (Orochi) algorithm — ESM JavaScript port of square_search.py.
+ * Square Search (Yamata) algorithm — ESM JavaScript port of square_search.py.
  *
  * The algorithm maps a 1-D haystack onto a virtual √n × √n grid and exploits
  * the D₄ symmetry group to check up to 8 cells per inner iteration, reducing
@@ -63,7 +63,7 @@ export function getTopLeftQuadrantLastCell(base) {
 // ── Core search ──────────────────────────────────────────────────────────────
 
 /**
- * Search for needle in haystack using the Square Search (Orochi) algorithm.
+ * Search for needle in haystack using the Square Search (Yamata) algorithm.
  *
  * @param {any[]} haystack - array to search (any element type)
  * @param {any}   needle   - value to find

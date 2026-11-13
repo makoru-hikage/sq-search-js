@@ -1,7 +1,7 @@
 /**
  * visualizer.js
  *
- * Side-by-side animation: Orochi (D4 symmetry) vs. Linear search.
+ * Side-by-side animation: Yamata (D4 symmetry) vs. Linear search.
  * Both run simultaneously on the same array and the same needle so the
  * difference in traversal pattern and check count is immediately visible.
  *
@@ -17,7 +17,7 @@ const ORBIT_HUES = [210, 280, 155, 35, 0, 190, 320, 55, 240, 110];
 const SPEED_MS   = [2000, 1100, 580, 300, 160, 84, 44, 23, 12, 6];
 const GRID_MAX   = 270;  // max px per grid (two grids side by side)
 
-// ── Orochi step generator ─────────────────────────────────────────────────────
+// ── Yamata step generator ─────────────────────────────────────────────────────
 
 function* orochiSteps(arrLen, target) {
   const base       = findNearestSquareRoot(arrLen);
@@ -114,7 +114,7 @@ function makeGS() {
   };
 }
 
-const O = makeGS();  // Orochi state
+const O = makeGS();  // Yamata state
 const L = makeGS();  // Linear state
 
 // ── Shared layout vars (updated whenever n or cellPx changes) ─────────────────
@@ -250,7 +250,7 @@ function resetSearch() {
 
 // ── Step logic ────────────────────────────────────────────────────────────────
 
-function stepOrochi() {
+function stepYamata() {
   if (!O.gen || O.isDone) return false;
 
   const { value: step, done } = O.gen.next();
@@ -324,7 +324,7 @@ function stepLinear() {
 }
 
 function tick() {
-  const moreO = stepOrochi();
+  const moreO = stepYamata();
   const moreL = stepLinear();
   syncStats();
 
@@ -343,12 +343,12 @@ function showComparison() {
   const ratio = (L.totalComps / O.totalComps).toFixed(2);
   if (L.totalComps > O.totalComps) {
     setStatus(
-      `Done \u2014 Orochi: ${O.totalComps} checks \u00B7 Linear: ${L.totalComps} checks \u00B7 Linear used ${ratio}\u00D7 more`,
+      `Done \u2014 Yamata: ${O.totalComps} checks \u00B7 Linear: ${L.totalComps} checks \u00B7 Linear used ${ratio}\u00D7 more`,
       'found'
     );
   } else if (L.totalComps < O.totalComps) {
     setStatus(
-      `Done \u2014 Orochi: ${O.totalComps} checks \u00B7 Linear: ${L.totalComps} checks \u00B7 Orochi used ${(O.totalComps / L.totalComps).toFixed(2)}\u00D7 more`,
+      `Done \u2014 Yamata: ${O.totalComps} checks \u00B7 Linear: ${L.totalComps} checks \u00B7 Yamata used ${(O.totalComps / L.totalComps).toFixed(2)}\u00D7 more`,
       'miss'
     );
   } else {
@@ -456,7 +456,7 @@ btnStep.addEventListener('click', () => {
   btnPlay.textContent = '\u25B6 Play';
   const bothDone = O.isDone && L.isDone;
   if (bothDone) resetSearch();
-  stepOrochi();
+  stepYamata();
   stepLinear();
   syncStats();
   if (O.isDone && L.isDone) showComparison();

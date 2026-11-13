@@ -56,7 +56,7 @@ const pf = (v, d, w) => v.toFixed(d).padStart(w);
 console.log('UNSORTED ARRAYS');
 console.log('(Binary search includes sorting cost)\n');
 
-const HEADER = `${'Size'.padStart(6)} | ${'b'.padStart(4)} | ${'Needle'.padStart(8)} | ${'Linear µs'.padStart(10)} | ${'Orochi µs'.padStart(10)} | ${'Binary µs'.padStart(10)} | ${'Winner'.padStart(8)}`;
+const HEADER = `${'Size'.padStart(6)} | ${'b'.padStart(4)} | ${'Needle'.padStart(8)} | ${'Linear µs'.padStart(10)} | ${'Yamata µs'.padStart(10)} | ${'Binary µs'.padStart(10)} | ${'Winner'.padStart(8)}`;
 console.log(HEADER);
 console.log('-'.repeat(HEADER.length));
 
@@ -74,11 +74,11 @@ for (const size of SIZES) {
   ];
   for (const [label, needle] of cases) {
     const tLinear = benchmark(linearSearch,         arr, needle, it);
-    const tOrochi = benchmark(squareSearch,          arr, needle, it);
+    const tYamata = benchmark(squareSearch,          arr, needle, it);
     const tBinary = benchmark(binarySearchUnsorted,  arr, needle, it);
-    const winner  = tLinear <= tOrochi && tLinear <= tBinary ? 'Linear'
-                  : tOrochi <= tBinary ? 'Orochi' : 'Binary';
-    console.log(`${pi(size,6)} | ${pi(b,4)} | ${pi(label,8)} | ${pf(tLinear,3,10)} | ${pf(tOrochi,3,10)} | ${pf(tBinary,3,10)} | ${pi(winner,8)}`);
+    const winner  = tLinear <= tYamata && tLinear <= tBinary ? 'Linear'
+                  : tYamata <= tBinary ? 'Yamata' : 'Binary';
+    console.log(`${pi(size,6)} | ${pi(b,4)} | ${pi(label,8)} | ${pf(tLinear,3,10)} | ${pf(tYamata,3,10)} | ${pf(tBinary,3,10)} | ${pi(winner,8)}`);
   }
   console.log();
 }

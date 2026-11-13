@@ -1,7 +1,7 @@
 # sq-search-js
 
-ESM JavaScript port of the **Orochi** (Square Search) algorithm, plus an
-interactive browser-based visualizer comparing Orochi against linear search.
+ESM JavaScript port of the **Yamata** (Square Search) algorithm, plus an
+interactive browser-based visualizer comparing Yamata against linear search.
 
 ---
 
@@ -67,7 +67,7 @@ npm run test:coverage
 | `npm start` | Demo search via `main.js` |
 | `npm run test:correctness` | Hard-coded correctness cases |
 | `npm run test:coverage` | Exhaustive cell coverage across multiple bases |
-| `npm run benchmark` | Linear vs Orochi vs binary search (sorted + unsorted) |
+| `npm run benchmark` | Linear vs Yamata vs binary search (sorted + unsorted) |
 | `npm run benchmark:large` | Scaled benchmark, n up to 12 100 |
 | `npm run benchmark:random` | 90% hit / 10% miss mixed workload |
 | `npm run audit` | D₄ head uniqueness audit across all step types |
@@ -79,7 +79,7 @@ npm run test:coverage
 
 ## Visualizer
 
-The visualizer animates both Orochi and linear search side by side on the same
+The visualizer animates both Yamata and linear search side by side on the same
 array and needle, one orbit step per tick.
 
 **Start the server** (required - browsers block ESM imports over `file://`):
@@ -107,7 +107,7 @@ Then open **http://localhost:3000** in a browser.
 
 ### Reading the visualizer
 
-- **Orochi grid** - cells light up in orbit-cycling hues; the small white dot
+- **Yamata grid** - cells light up in orbit-cycling hues; the small white dot
   marks **e₀**, the canonical §8.2 head (top-left quadrant, above the
   diagonal) from which the other 7 orbit members are derived
 - **Linear grid** - cells highlight in warm orange, left to right
@@ -119,12 +119,12 @@ Then open **http://localhost:3000** in a browser.
 
 | File | Purpose |
 |---|---|
-| `square_search.js` | Core Orochi algorithm (ESM export) |
+| `square_search.js` | Core Yamata algorithm (ESM export) |
 | `utils.js` | `mulberry32` seeded PRNG, `seededSample`, `shuffle` |
 | `main.js` | CLI demo |
 | `test_correctness.js` | Hard-coded correctness tests |
 | `test_coverage.js` | Exhaustive cell coverage tests |
-| `benchmark.js` | Three-way benchmark (linear / Orochi / binary) |
+| `benchmark.js` | Three-way benchmark (linear / Yamata / binary) |
 | `benchmark_large.js` | Large-n benchmark |
 | `benchmark_random.js` | Hit/miss mixed workload benchmark |
 | `audit_heads.js` | D₄ head uniqueness audit |

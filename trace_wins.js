@@ -7,7 +7,7 @@
  *
  * Note: seeded arrays differ from the Python original (mulberry32 vs CPython
  * random), so specific needle values and check counts will differ, but the
- * structural comparison (Orochi vs linear) is preserved.
+ * structural comparison (Yamata vs linear) is preserved.
  */
 
 import { findNearestSquareRoot } from './square_search.js';
@@ -94,7 +94,7 @@ const cMiddle = traceSearch(arr, middle, 'middle');
 const cLast   = traceSearch(arr, last,   'last');
 
 console.log();
-console.log('── How many checks Orochi does vs linear scan position ──────────────────');
-console.log(`  first:  Orochi=${cFirst} checks  |  linear scans to position 0  (1 comparison)`);
-console.log(`  middle: Orochi=${cMiddle} checks  |  linear scans to position ${Math.floor(SIZE/2)}  (~${Math.floor(SIZE/2)+1} comparisons)`);
-console.log(`  last:   Orochi=${cLast} checks  |  linear scans to position ${SIZE-1}  (~${SIZE} comparisons)`);
+console.log('── How many checks Yamata does vs linear scan position ──────────────────');
+console.log(`  first:  Yamata=${cFirst} checks  |  linear scans to position 0  (1 comparison)`);
+console.log(`  middle: Yamata=${cMiddle} checks  |  linear scans to position ${Math.floor(SIZE/2)}  (~${Math.floor(SIZE/2)+1} comparisons)`);
+console.log(`  last:   Yamata=${cLast} checks  |  linear scans to position ${SIZE-1}  (~${SIZE} comparisons)`);
